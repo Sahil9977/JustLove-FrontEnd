@@ -79,17 +79,10 @@ export default function Gate({ onUnlock }) {
   };
 
   const btnContent = (text) =>
-    loading ? <Loader2 className="gate-spin" size={22} /> : text;
+    loading ? <Loader2 className="spin" size={22} /> : text;
 
   return (
     <section key={step} className={'card' + (shake ? ' shake' : '')}>
-      <style>{`
-        @keyframes gate-spin { to { transform: rotate(360deg); } }
-        .gate-spin { animation: gate-spin 0.8s linear infinite !important; }
-        .main { display: inline-flex; align-items: center; justify-content: center; }
-        .main:disabled { opacity: .85; cursor: not-allowed; }
-      `}</style>
-
       <Heart />
 
       {step === 'code' && (
@@ -173,9 +166,7 @@ export default function Gate({ onUnlock }) {
         <>
           <div className="step">STEP 2</div>
           <h1>Check your inbox</h1>
-          <p>
-            OTP is sent to your email ID: <strong>{email}</strong>
-          </p>
+          <p>{serverMsg || 'OTP is sent to your email'}</p>
 
           <form onSubmit={run(handleOtp)}>
             <label htmlFor="o">ONE-TIME CODE</label>
