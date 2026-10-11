@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import * as THREE from 'three';
-import SkyToBirthday from './SkytoBirthday.jsx'; // 👈 Sky -> Birthday chain (mounted ONCE, paused, then started)
+import SkyToBirthday from './SkyToBirthday.jsx'; // 👈 Sky -> Birthday chain (mounted ONCE, paused, then started)
 import './HomePage.css';
 
 const TEXT_START_DELAY_MS = 1000;

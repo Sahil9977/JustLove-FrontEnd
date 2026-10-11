@@ -14,7 +14,7 @@ import HomePage from './HomePage.jsx';
 import GalleryPage from './GalleryPage.jsx';
 import Message from './Message.jsx';
 import IntroAnimation from './IntroAnimation.jsx';
-import SkyToBirthday from './SkytoBirthday.jsx';
+import SkyToBirthday from './SkyToBirthday.jsx';
 // import HappyBirthday from './HappyBirthday.jsx';
 import DocsPage from './pages/DocsPage.jsx';
 import NotFound from './pages/NotFound.jsx';
