@@ -1,5 +1,5 @@
-
 import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 import { verifyCode, forgot, verifyOtp } from '../api.js';
 import Heart from './Heart.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -11,6 +11,8 @@ export default function Gate({ onUnlock }) {
   const [email, setEmail] = useState('');
   const [err, setErr] = useState('');
   const [shake, setShake] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverMsg, setServerMsg] = useState('');
   const { login, verifyOTP } = useAuth();
   const navigate = useNavigate();
 
@@ -22,14 +24,13 @@ export default function Gate({ onUnlock }) {
 
   const run = (fn) => async (e) => {
     e.preventDefault();
+    if (loading) return; // blocks double submit
     setErr('');
+    setLoading(true);
 
     try {
       await fn();
     } catch (x) {
-      console.log(x?.response?.data?.error,
-        x?.response?.data?.message,
-        x?.message)
       setErr(
         x?.response?.data?.error ||
         x?.response?.data?.message ||
@@ -41,6 +42,8 @@ export default function Gate({ onUnlock }) {
       setShake(true);
 
       setTimeout(() => setShake(false), 450);
+    } finally {
+      setLoading(false); // always stop the loader
     }
   };
 
@@ -49,11 +52,7 @@ export default function Gate({ onUnlock }) {
       throw new Error('Please enter the love code.');
     }
 
-    const res = await login(val);
-    console.log(res)
-
-    // if(res.authenticated) navigate('/intro')
-
+    await login(val);
     onUnlock();
   };
 
@@ -62,27 +61,25 @@ export default function Gate({ onUnlock }) {
       throw new Error('Please enter your email.');
     }
 
-    await forgot(email);
+    const res = await forgot(email);
+    // works whether api.js returns the axios response or just the data
+    setServerMsg(res?.data?.message || res?.message || '');
     go('otp');
   };
 
   const handleOtp = async () => {
     if (!val.trim()) {
       throw new Error('Please enter the one-time code.');
-
-
     }
 
-    console.log(email, val)
     const res = await verifyOTP(email, val);
 
-    // const res = await verifyOtp(email, val);
-
     // Backend has now created/updated the HttpOnly auth cookie.
-    console.log(res, res.authenticated && res.user.id === 'guest', res.authenticated, res.user.id === 'guest')
-    if (res.authenticated && res.user.id === 'guest') navigate('/documentation')
-
+    if (res.authenticated && res.user.id === 'guest') navigate('/documentation');
   };
+
+  const btnContent = (text) =>
+    loading ? <Loader2 className="spin" size={22} /> : text;
 
   return (
     <section key={step} className={'card' + (shake ? ' shake' : '')}>
@@ -111,8 +108,8 @@ export default function Gate({ onUnlock }) {
               {err}
             </p>
 
-            <button className="main" type="submit">
-              Unlock Our World
+            <button className="main" type="submit" disabled={loading}>
+              {btnContent('Unlock Our World')}
             </button>
           </form>
 
@@ -150,8 +147,8 @@ export default function Gate({ onUnlock }) {
               {err}
             </p>
 
-            <button className="main" type="submit">
-              Send Me the Code
+            <button className="main" type="submit" disabled={loading}>
+              {btnContent('Send Me the Code')}
             </button>
           </form>
 
@@ -169,9 +166,7 @@ export default function Gate({ onUnlock }) {
         <>
           <div className="step">STEP 2</div>
           <h1>Check your inbox</h1>
-          <p>
-            If this email is registered, a code is on its way. Enter it below.
-          </p>
+          <p>{serverMsg || 'OTP is sent to your email'}</p>
 
           <form onSubmit={run(handleOtp)}>
             <label htmlFor="o">ONE-TIME CODE</label>
@@ -189,8 +184,8 @@ export default function Gate({ onUnlock }) {
               {err}
             </p>
 
-            <button className="main" type="submit">
-              Unlock Our World
+            <button className="main" type="submit" disabled={loading}>
+              {btnContent('Unlock Our World')}
             </button>
           </form>
 
