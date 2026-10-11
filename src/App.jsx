@@ -14,8 +14,8 @@ import HomePage from './HomePage.jsx';
 import GalleryPage from './GalleryPage.jsx';
 import Message from './Message.jsx';
 import IntroAnimation from './IntroAnimation.jsx';
-import SkyToBirthday from './SkyToBirthday.jsx';
-import HappyBirthday from './HappyBirthday.jsx';
+import SkyToBirthday from './SkytoBirthday.jsx';
+// import HappyBirthday from './HappyBirthday.jsx';
 import DocsPage from './pages/DocsPage.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -74,9 +74,9 @@ export default function App() {
               <Route path="/home/gallery/message" element={<Message />} />
 
               {/* test routes */}
-              <Route path="/hy" element={<HappyBirthday />} />
+              {/* <Route path="/hy" element={<HappyBirthday />} />
               <Route path="/g" element={<GalleryPage />} />
-              <Route path="/m" element={<Message />} />
+              <Route path="/m" element={<Message />} /> */}
             </Route>
 
             {/* Unknown route (the old file had TWO path="*" routes; the second one could never run) */}
