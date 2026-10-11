@@ -14,7 +14,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL:'https://justlove-backend.onrender.com',
+  baseURL:'https://justlove-backend.onrender.com/api',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
