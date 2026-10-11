@@ -1,0 +1,894 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Caveat:wght@500;600&family=Great+Vibes&family=Herr+Von+Muellerhoff&family=Sora:wght@300;400&display=swap");
+
+/* ============================================================
+   ROOT: full-screen fixed panel (z-index 0). Your navbar must have a higher z-index
+   so it floats above. navHeight prop (default 80) keeps the card/note clear of it.
+   Every id, class, keyframe and CSS variable here starts with mp- to avoid clashes.
+   ============================================================ */
+.mp-root {
+    --mp-fg: #f1efec;
+    --mp-mut: #8d8d95;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    color: var(--mp-fg) !important;
+    font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important
+}
+
+.mp-root,
+#mp-wrap,
+#mp-stage,
+#mp-card,
+#mp-scroll,
+.mp-letter,
+.mp-mi-badge {
+    box-sizing: border-box !important
+}
+
+#mp-c {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important
+}
+
+#mp-vig {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .75) 100%) !important
+}
+
+#mp-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: max(4vh, var(--mp-nav-h, 80px)) 16px max(4vh, env(safe-area-inset-bottom, 0px)) !important;
+    perspective: 1300px !important;
+    transition: opacity 1.4s ease
+}
+
+#mp-wrap.mp-gone {
+    opacity: 0
+}
+
+#mp-stage {
+    width: min(940px, 100%) !important;
+    animation: mp-enter 1.4s cubic-bezier(.2, .8, .2, 1) both
+}
+
+@keyframes mp-enter {
+    from {
+        opacity: 0;
+        transform: translateY(36px) scale(.95)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+#mp-card {
+    position: relative !important;
+    border-radius: 22px !important;
+    background: rgba(6, 6, 8, .62) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, .8), 0 0 60px rgba(255, 255, 255, .04) !important;
+    transform-style: preserve-3d !important;
+    will-change: transform !important;
+    --mp-lx: 50%;
+    --mp-ly: 30%
+}
+
+#mp-card::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    padding: 1px !important;
+    pointer-events: none !important;
+    background: linear-gradient(120deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .06), rgba(255, 255, 255, .35), rgba(255, 255, 255, .06), rgba(255, 255, 255, .5));
+    background-size: 300% 300% !important;
+    animation: mp-bd 10s linear infinite;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0) !important
+}
+
+@keyframes mp-bd {
+    to {
+        background-position: 300% 0
+    }
+}
+
+#mp-card::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    background: radial-gradient(circle at var(--mp-lx) var(--mp-ly), rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 55%) !important
+}
+
+#mp-bar {
+    display: flex !important;
+    gap: 7px !important;
+    padding: 16px 22px 0 !important
+}
+
+.mp-dot {
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, .18) !important
+}
+
+#mp-scroll {
+    max-height: min(calc(78vh - var(--mp-nav-h, 80px) * .6), 860px) !important;
+    overflow-y: auto !important;
+    padding: 26px clamp(22px, 5vw, 52px) 40px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255, 255, 255, .2) transparent !important;
+    -webkit-mask-image: linear-gradient(transparent 0, #000 18px, #000 calc(100% - 22px), transparent 100%) !important;
+    mask-image: linear-gradient(transparent 0, #000 18px, #000 calc(100% - 22px), transparent 100%) !important
+}
+
+#mp-title {
+    margin: 0 0 22px !important;
+    font-weight: 300 !important;
+    font-size: .74rem !important;
+    letter-spacing: .34em !important;
+    text-transform: uppercase !important;
+    color: var(--mp-mut) !important
+}
+
+#mp-msg {
+    position: relative !important;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji' !important;
+    font-size: clamp(1.15rem, 1.3vw + .6rem, 1.5rem) !important;
+    line-height: 1.95 !important;
+    letter-spacing: normal !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    color: var(--mp-fg) !important
+}
+
+.mp-para {
+    margin: 0 0 1.2em !important;
+    font-variant-emoji: emoji !important
+}
+
+.mp-para:last-of-type {
+    margin-bottom: 0 !important
+}
+
+.mp-w {
+    display: inline-block !important;
+    white-space: nowrap !important
+}
+
+.mp-c {
+    opacity: 0
+}
+
+.mp-c.mp-on {
+    opacity: 1;
+    animation: mp-k .5s ease-out
+}
+
+@keyframes mp-k {
+    from {
+        text-shadow: 0 0 14px rgba(255, 255, 255, .95)
+    }
+
+    to {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0)
+    }
+}
+
+#mp-cur {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: .62em !important;
+    height: 1.25em !important;
+    background: #fff !important;
+    box-shadow: 0 0 12px rgba(255, 255, 255, .7) !important;
+    pointer-events: none !important;
+    animation: mp-bl 1s steps(1) infinite;
+    opacity: 0
+}
+
+#mp-cur.mp-show {
+    opacity: 1
+}
+
+@keyframes mp-bl {
+    50% {
+        opacity: 0
+    }
+}
+
+/* ---- the special words: blurred world, crisp words drawn in front ---- */
+#mp-blur {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 7 !important;
+    pointer-events: none !important;
+    opacity: 0;
+    background: radial-gradient(closest-side at 50% 50%, rgba(255, 196, 150, .16), rgba(255, 92, 150, .07) 55%, rgba(0, 0, 0, 0) 85%) !important;
+    transition: opacity 1.6s ease;
+    backdrop-filter: blur(3.75px) brightness(.72) !important;
+    -webkit-backdrop-filter: blur(3.75px) brightness(.72) !important
+}
+
+.mp-root.mp-focus #mp-blur {
+    opacity: 1
+}
+
+#mp-focus {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 8 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    perspective: 1100px !important
+}
+
+#mp-hero {
+    position: relative !important;
+    width: min(700px, 86%) !important;
+    will-change: transform !important;
+    transition: opacity .45s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .7)) drop-shadow(0 0 14px rgba(255, 214, 150, .45)) drop-shadow(0 0 40px rgba(255, 90, 140, .28)) !important
+}
+
+#mp-hero.mp-out {
+    opacity: 0
+}
+
+#mp-hsvg {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 10/3 !important;
+    overflow: visible !important
+}
+
+#mp-hfill,
+#mp-hline,
+#mp-hmask {
+    font-family: 'Great Vibes', 'Snell Roundhand', 'Brush Script MT', cursive !important
+}
+
+.mp-ml,
+.mp-hl {
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+    stroke-dasharray: var(--mp-d, 1300) 99999 !important;
+    stroke-dashoffset: var(--mp-d, 1300)
+}
+
+.mp-ml {
+    fill: #fff !important;
+    fill-opacity: 0;
+    stroke: #fff !important;
+    stroke-width: var(--mp-sw, 16) !important
+}
+
+.mp-hl {
+    fill: none !important;
+    stroke: url(#mp-og) !important;
+    stroke-width: 2.2 !important
+}
+
+.mp-go .mp-ml {
+    animation: mp-dr var(--mp-dur, 1.7s) cubic-bezier(.4, .1, .25, 1) var(--mp-dl, 0s) forwards, mp-fl .5s ease calc(var(--mp-dl, 0s) + var(--mp-dur, 1.7s) + .05s) forwards
+}
+
+.mp-go .mp-hl {
+    animation: mp-dr var(--mp-dur, 1.7s) cubic-bezier(.4, .1, .25, 1) var(--mp-dl, 0s) forwards
+}
+
+@keyframes mp-dr {
+    to {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes mp-fl {
+    to {
+        fill-opacity: 1
+    }
+}
+
+#mp-spark {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 10 !important;
+    pointer-events: none !important
+}
+
+/* the small handwritten note */
+#mp-note {
+    position: absolute !important;
+    inset: 0 !important;
+    padding-top: calc(var(--mp-nav-h, 80px) + 3vh) !important;
+    z-index: 9 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    opacity: 0;
+    transition: opacity 1s ease
+}
+
+#mp-note.mp-show {
+    opacity: 1
+}
+
+.mp-letter {
+    position: relative !important;
+    width: min(900px, 92%) !important;
+    min-height: min(58vh, 540px) !important;
+    max-height: calc(100vh - var(--mp-nav-h, 80px) - 5vh) !important;
+    padding: 64px clamp(28px, 6vw, 72px) 36px !important;
+    border-radius: 5px !important;
+    text-align: left !important;
+    color: #141a2e !important;
+    transform: rotate(-1.1deg);
+    background: linear-gradient(172deg, #fbf6ea 0%, #f3ead8 55%, #ebdfc7 100%) !important;
+    box-shadow: 0 34px 70px rgba(0, 0, 0, .72), 0 8px 18px rgba(0, 0, 0, .45), inset 0 0 70px rgba(150, 115, 60, .16) !important
+}
+
+.mp-letter::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    opacity: .16;
+    mix-blend-mode: multiply !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .34  0 0 0 0 .2  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>") !important
+}
+
+.mp-tape {
+    position: absolute !important;
+    top: -16px !important;
+    left: 50% !important;
+    width: 132px !important;
+    height: 34px !important;
+    margin-left: -66px !important;
+    transform: rotate(-2.5deg);
+    background: linear-gradient(180deg, rgba(255, 216, 146, .9), rgba(238, 188, 98, .86)) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .3) !important;
+    clip-path: polygon(0 0, 3% 18%, 0 36%, 3% 54%, 0 72%, 3% 100%, 100% 100%, 97% 82%, 100% 64%, 97% 46%, 100% 28%, 97% 0) !important
+}
+
+#mp-nmsg {
+    margin: 0 !important;
+    font-family: 'Caveat', 'Segoe Script', 'Brush Script MT', cursive, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji' !important;
+    font-weight: 600 !important;
+    font-size: 34px;
+    line-height: 1.5 !important;
+    color: #141a2e !important
+}
+
+.mp-npara {
+    margin: 0 0 .9em !important
+}
+
+.mp-npara:last-child {
+    margin-bottom: 0 !important
+}
+
+#mp-nmsg .mp-w {
+    display: inline-block !important;
+    white-space: nowrap !important
+}
+
+.mp-nc {
+    opacity: 0;
+    color: #141a2e !important;
+    transition: opacity .35s ease-out
+}
+
+.mp-nc.mp-on {
+    opacity: 1;
+    color: #141a2e !important
+}
+
+@keyframes mp-inkin {
+    from {
+        opacity: 0;
+        filter: blur(2.5px);
+        color: #7c8197
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0)
+    }
+}
+
+#mp-signoff {
+    margin: 22px 0 0 !important;
+    text-align: right !important;
+    font-family: 'Caveat', 'Segoe Script', cursive !important;
+    font-weight: 600 !important;
+    font-size: 2rem !important;
+    letter-spacing: .04em !important;
+    color: #3d2f20 !important;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity .9s ease, transform .9s ease
+}
+
+#mp-signoff.mp-on {
+    opacity: .95;
+    transform: none
+}
+
+#mp-nsvg {
+    display: block !important;
+    width: min(460px, 80%);
+    margin: 0 0 0 auto !important;
+    height: auto !important;
+    aspect-ratio: 1000/300;
+    overflow: visible !important
+}
+
+#mp-nt2,
+#mp-smask {
+    font-family: 'Herr Von Muellerhoff', 'Mrs Saint Delafield', 'Brush Script MT', cursive !important
+}
+
+.mp-ml2 {
+    fill: #fff !important;
+    fill-opacity: 0;
+    stroke: #fff !important;
+    stroke-width: var(--mp-sw, 14) !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    stroke-dasharray: var(--mp-d, 1300) !important;
+    stroke-dashoffset: var(--mp-d, 1300)
+}
+
+#mp-nsvg.mp-go .mp-ml2 {
+    animation: mp-dr var(--mp-dur, 1.4s) cubic-bezier(.4, .1, .25, 1) var(--mp-dl, 0s) forwards, mp-fl .8s ease calc(var(--mp-dl, 0s) + var(--mp-dur, 1.4s) + .05s) forwards
+}
+
+#mp-sdot {
+    transform-box: fill-box !important;
+    transform-origin: center !important;
+    transform: scale(0);
+    opacity: 0
+}
+
+#mp-nsvg.mp-go #mp-sdot {
+    animation: mp-dotpop .5s cubic-bezier(.2, 1.8, .4, 1) var(--mp-dd, 0s) forwards
+}
+
+@keyframes mp-dotpop {
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+/* black shutters (closing, then we navigate away) */
+.mp-shut {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 50.6% !important;
+    z-index: 30 !important;
+    pointer-events: none !important;
+    background-color: #030303 !important;
+    background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, .035) 0 1px, rgba(0, 0, 0, 0) 1px 26px) !important;
+    transition: transform 1.35s cubic-bezier(.76, 0, .24, 1)
+}
+
+.mp-shut.mp-top {
+    top: 0 !important;
+    transform: translateY(-101%);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, .9) !important
+}
+
+.mp-shut.mp-bot {
+    bottom: 0 !important;
+    transform: translateY(101%);
+    box-shadow: 0 -10px 50px rgba(0, 0, 0, .9) !important
+}
+
+.mp-root.mp-close .mp-shut {
+    transform: none;
+    pointer-events: auto !important
+}
+
+#mp-seam {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(50% - .5px) !important;
+    height: 1px !important;
+    z-index: 31 !important;
+    pointer-events: none !important;
+    opacity: 0;
+    transform: scaleX(.1);
+    background: linear-gradient(90deg, transparent, #ffe29a, #f6b84a, transparent) !important;
+    box-shadow: 0 0 20px rgba(255, 190, 80, .8) !important;
+    transition: opacity .5s, transform .9s ease
+}
+
+.mp-root.mp-close #mp-seam {
+    opacity: .85;
+    transform: none;
+    transition-delay: 1.1s
+}
+
+/* logo sparkle dots */
+.mp-jdot {
+    transform-box: fill-box !important;
+    transform-origin: center !important;
+    transform: scale(0);
+    opacity: 0
+}
+
+#mp-hsvg.mp-go .mp-jdot {
+    animation: mp-dotpop .55s cubic-bezier(.2, 1.8, .4, 1) var(--mp-dd, 2s) forwards, mp-twk 2.4s ease-in-out calc(var(--mp-dd, 2s) + .7s) infinite
+}
+
+@keyframes mp-twk {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: .55
+    }
+}
+
+/* ---- floating message icon: shown first, tap it to read ---- */
+#mp-wrap.mp-pre {
+    opacity: 0;
+    visibility: hidden !important;
+    pointer-events: none !important
+}
+
+#mp-wrap.mp-pre #mp-stage {
+    animation: none
+}
+
+#mp-mi {
+    position: absolute !important;
+    z-index: 6 !important;
+    right: calc(18px + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    width: 64px !important;
+    height: 64px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transform-origin: 50% 50% !important;
+    opacity: 0;
+    transition: transform 1.3s cubic-bezier(.65, 0, .2, 1), opacity .9s ease
+}
+
+#mp-mi.mp-ready {
+    opacity: 1
+}
+
+#mp-mi.mp-center {
+    transform: translate(var(--mp-tx, 0px), var(--mp-ty, 0px)) scale(var(--mp-s, 1.6))
+}
+
+#mp-mi.mp-snap {
+    transition: transform 0s, opacity .9s ease
+}
+
+#mp-mi.mp-opened {
+    cursor: default !important;
+    pointer-events: none !important
+}
+
+.mp-root.mp-told #mp-mi {
+    opacity: 0;
+    pointer-events: none !important
+}
+
+#mp-mi:focus-visible {
+    outline: 2px solid #fff !important;
+    outline-offset: 8px !important;
+    border-radius: 26px !important
+}
+
+.mp-mi-in {
+    position: absolute !important;
+    inset: 0 !important;
+    animation: mp-mibob 5.2s ease-in-out infinite
+}
+
+@keyframes mp-mibob {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3deg)
+    }
+
+    50% {
+        transform: translateY(-9px) rotate(3deg)
+    }
+}
+
+.mp-mi-face {
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(160deg, rgba(66, 68, 80, .94), rgba(14, 14, 18, .95) 62%) !important;
+    border: 1px solid rgba(255, 255, 255, .3) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .75), 0 0 38px rgba(255, 255, 255, .16), inset 0 1px 0 rgba(255, 255, 255, .38) !important
+}
+
+.mp-mi-icon {
+    width: 56% !important;
+    height: 56% !important;
+    display: block !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, .5)) !important
+}
+
+.mp-mi-halo {
+    position: absolute !important;
+    inset: -12px !important;
+    border-radius: 34px !important;
+    border: 1px solid rgba(255, 255, 255, .4) !important;
+    opacity: 0;
+    animation: mp-mihalo 2.8s ease-out infinite
+}
+
+.mp-mi-halo.mp-b {
+    animation-delay: 1.4s
+}
+
+@keyframes mp-mihalo {
+    0% {
+        transform: scale(.82);
+        opacity: .55
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0
+    }
+}
+
+.mp-mi-badge {
+    position: absolute !important;
+    top: -8px !important;
+    right: -8px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    padding: 0 7px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #ff3b30 !important;
+    color: #fff !important;
+    font: 700 13px/1 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    box-shadow: 0 0 0 2px #000, 0 0 16px rgba(255, 59, 48, .85) !important;
+    transition: transform .5s ease, opacity .5s ease;
+    animation: mp-mipop 1.9s ease-in-out infinite
+}
+
+@keyframes mp-mipop {
+
+    0%,
+    100% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.15)
+    }
+}
+
+#mp-mi.mp-read .mp-mi-badge {
+    animation: none;
+    transform: scale(0);
+    opacity: 0
+}
+
+#mp-mi.mp-opened .mp-mi-halo {
+    animation: none;
+    opacity: 0
+}
+
+#mp-milab {
+    position: absolute !important;
+    z-index: 6 !important;
+    left: 50% !important;
+    top: var(--mp-ly, 60%) !important;
+    transform: translateX(-50%);
+    text-align: center !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+    opacity: 0;
+    transition: opacity .6s ease;
+    font-weight: 300 !important;
+    font-size: .74rem !important;
+    letter-spacing: .34em !important;
+    text-transform: uppercase !important;
+    color: var(--mp-mut) !important
+}
+
+#mp-milab.mp-on {
+    opacity: 1
+}
+
+.mp-milab-title {
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-weight: 400 !important;
+    font-size: .82rem !important;
+    letter-spacing: .2em !important;
+    color: var(--mp-fg) !important
+}
+
+@media (max-height:640px) {
+    #mp-mi {
+        width: 54px !important;
+        height: 54px !important
+    }
+}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion:reduce) {
+
+    #mp-wrap,
+    #mp-note,
+    .mp-shut,
+    #mp-seam {
+        transition: none
+    }
+
+    .mp-ml2 {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+        animation: none !important
+    }
+
+    #mp-sdot {
+        transform: none;
+        opacity: 1;
+        animation: none !important
+    }
+
+    .mp-nc {
+        opacity: 1
+    }
+
+    #mp-signoff {
+        opacity: .95;
+        transform: none
+    }
+
+    #mp-stage {
+        animation: none
+    }
+
+    #mp-card::before {
+        animation: none
+    }
+
+    #mp-cur {
+        animation: none
+    }
+
+    .mp-c.mp-on {
+        animation: none
+    }
+
+    #mp-blur {
+        transition: none
+    }
+
+    .mp-ml,
+    .mp-hl {
+        stroke-dashoffset: 0;
+        animation: none !important
+    }
+
+    .mp-ml {
+        fill-opacity: 1
+    }
+
+    .mp-jdot {
+        transform: none;
+        opacity: 1;
+        animation: none !important
+    }
+
+    .mp-mi-in,
+    .mp-mi-halo,
+    .mp-mi-badge {
+        animation: none
+    }
+
+    #mp-mi {
+        transition-duration: .3s
+    }
+}
+
+
+/* ============================================================
+   HARDENING: direct !important rules on every text element, so a global
+   p / span / div / body rule in your app (colour, font, spacing...) can never win.
+   (inherit alone is NOT enough: a global rule hitting the element directly beats inheritance)
+   ============================================================ */
+.mp-para,
+.mp-npara,
+.mp-w,
+.mp-c,
+.mp-nc {
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+    letter-spacing: inherit !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    line-height: inherit !important;
+    text-align: inherit !important
+}
+
+#mp-msg,
+#mp-nmsg,
+#mp-signoff {
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important
+}
+
+#mp-msg .mp-para,
+#mp-msg .mp-w,
+#mp-msg .mp-c {
+    color: var(--mp-fg) !important
+}
+
+#mp-nmsg .mp-npara,
+#mp-nmsg .mp-w,
+#mp-nmsg .mp-nc {
+    color: #141a2e !important
+}
+
+#mp-signoff {
+    color: #3d2f20 !important
+}

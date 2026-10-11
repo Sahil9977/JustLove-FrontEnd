@@ -1,0 +1,54 @@
+
+/* intro animation  */
+
+
+.love-intro {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, #140a30, #02030a 70%);
+    color: #eaf4ff;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.love-intro canvas {
+    display: block;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.love-intro-flash {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background: radial-gradient(circle, #fff, #bde4ff);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.love-intro-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, .7));
+}
+
+.love-intro-tag {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 3;
+    text-align: center;
+    letter-spacing: .55em;
+    font-size: clamp(11px, 2.2vw, 18px);
+    opacity: 0;
+    pointer-events: none;
+    padding: 0 20px;
+    text-shadow: 0 0 18px #8cf;
+}

@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap");
+
+/* Everything is scoped to .nf-* classes. No *, html, body, :root or bare element selectors. */
+
+.nf-root {
+  --nf-fg: #f2f2f4;
+  --nf-mut: #8b8b95;
+  --nf-line: rgba(255, 255, 255, .18);
+  position: fixed;
+  inset: 0;
+  z-index: var(--nf-z, 10000);
+  isolation: isolate;
+  overflow: hidden;
+  background: #000;
+  color: var(--nf-fg);
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.nf-main,
+.nf-btn {
+  box-sizing: border-box;
+}
+
+.nf-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nf-vig {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, transparent 30%, #000 100%);
+}
+
+.nf-main {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ---------- 3D "404" ---------- */
+.nf-scene {
+  perspective: 900px;
+  height: clamp(150px, 30vw, 300px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nf-n3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  font-weight: 600;
+  font-size: clamp(7rem, 26vw, 16rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.nf-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) translateZ(calc(var(--i) * -7px));
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, calc(.55 - var(--i) * .04));
+}
+
+.nf-front {
+  position: relative;
+  display: block;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255, 255, 255, .35);
+  animation: nf-gl 5s infinite;
+}
+
+.nf-front::before,
+.nf-front::after {
+  content: '404';
+  position: absolute;
+  inset: 0;
+  opacity: .7;
+  clip-path: inset(0 0 100% 0);
+}
+
+.nf-front::before {
+  color: #9a9aa6;
+  animation: nf-g1 5s infinite;
+}
+
+.nf-front::after {
+  color: #444;
+  animation: nf-g2 5s infinite;
+}
+
+@keyframes nf-g1 {
+  0%, 90%, 100% {
+    clip-path: inset(0 0 100% 0);
+    transform: none;
+  }
+  92% {
+    clip-path: inset(20% 0 55% 0);
+    transform: translateX(-8px);
+  }
+  95% {
+    clip-path: inset(60% 0 15% 0);
+    transform: translateX(6px);
+  }
+}
+
+@keyframes nf-g2 {
+  0%, 91%, 100% {
+    clip-path: inset(0 0 100% 0);
+    transform: none;
+  }
+  93% {
+    clip-path: inset(45% 0 30% 0);
+    transform: translateX(9px);
+  }
+  97% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translateX(-5px);
+  }
+}
+
+@keyframes nf-gl {
+  0%, 90%, 100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: .75;
+  }
+}
+
+/* ---------- text + buttons ---------- */
+.nf-title {
+  margin: 34px 0 10px;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-style: normal;
+  text-shadow: none;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 3.4vw, 2rem);
+  letter-spacing: .02em;
+  color: var(--nf-fg);
+}
+
+.nf-text {
+  margin: 0 0 30px;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  max-width: 440px;
+  color: var(--nf-mut);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.nf-row {
+  position: relative;
+  z-index: 3;
+  align-items: center;
+  pointer-events: auto;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nf-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid var(--nf-line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: .25s;
+}
+
+.nf-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 34px rgba(255, 255, 255, .35);
+  transform: translateY(-2px);
+}
+
+.nf-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.nf-rise {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: nf-up .9s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+@keyframes nf-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .nf-front,
+  .nf-front::before,
+  .nf-front::after {
+    animation: none;
+  }
+}

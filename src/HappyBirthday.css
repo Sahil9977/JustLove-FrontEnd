@@ -1,0 +1,608 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0a1128;
+  --blue: #4f8cff;
+  --rose: #f4b6c2;
+  --text: #e8eeff;
+  --muted: #b8c6f0;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #04010a;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+#vig {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: #000;
+  z-index: 4;
+  pointer-events: none;
+  transition: height 2s ease;
+}
+
+.bar.t {
+  top: 0;
+}
+
+.bar.b {
+  bottom: 0;
+}
+
+body.cine .bar {
+  height: 7vh;
+}
+
+#title {
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 56vh;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+#title .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+#title h2 {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(44px, 9.5vw, 130px);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 26px var(--blue);
+}
+
+#title .wl {
+  animation: inL 1.4s 0.3s ease both;
+}
+
+#title .wr {
+  text-align: right;
+  animation: inR 1.4s 0.6s ease both;
+}
+
+#title span {
+  display: block;
+  margin-top: 8px;
+  font: 400 12px 'Poppins', sans-serif;
+  letter-spacing: 6px;
+  color: var(--rose);
+}
+
+@keyframes inL {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes inR {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  #title {
+    top: calc(7vh + 28px);
+    transform: none;
+  }
+
+  #title h2 {
+    font-size: clamp(38px, 12vw, 80px);
+  }
+}
+
+#pin {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  transform-origin: 32px 63px;
+  pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(0 0 6px #ff9ec7);
+}
+
+#home {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+#nm {
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  border-radius: 999px;
+  border: 1px solid #2a4390;
+  background: rgba(10, 17, 40, 0.6);
+  padding: 0 22px;
+  font: 400 15px 'Poppins', sans-serif;
+  color: var(--text);
+  text-align: center;
+  outline: none;
+}
+
+#nm:focus {
+  border-color: var(--blue);
+}
+
+#go {
+  background: #4f8cff;
+  color: #fff;
+  border: 0;
+}
+
+#blowBtn {
+  position: fixed;
+  z-index: 6;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
+  bottom: calc(7vh + 30px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 0;
+  padding: 11px 28px 11px 20px;
+  border: 2px solid #fff3c4;
+  border-radius: 999px;
+  color: #2a1450;
+  font: 700 15px 'Poppins', sans-serif;
+  letter-spacing: 0.4px;
+  background: linear-gradient(
+    110deg,
+    #ffd36b,
+    #ffb36b 40%,
+    #ff9ec7 70%,
+    #ffd36b
+  );
+  background-size: 250% 100%;
+  box-shadow: 0 0 30px rgba(255, 190, 100, 0.75);
+  animation:
+    bbBeat 1.2s ease-in-out infinite,
+    bbFlow 3.5s linear infinite,
+    bbUp 0.8s ease;
+}
+
+#blowBtn::before,
+#blowBtn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 211, 107, 0.85);
+  pointer-events: none;
+  animation: bbRing 1.8s ease-out infinite;
+}
+
+#blowBtn::after {
+  animation-delay: 0.9s;
+}
+
+#blowBtn .fl {
+  width: 17px;
+  height: 23px;
+  filter: drop-shadow(0 0 6px #ff8a3d);
+  transform-origin: 50% 90%;
+  animation: bbFlame 0.5s ease-in-out infinite alternate;
+}
+
+#blowBtn .tx {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+#blowBtn .tx small {
+  font: 600 8.5px 'Poppins', sans-serif;
+  letter-spacing: 3px;
+  color: #7a2f6e;
+  animation: bbTw 1.2s ease-in-out infinite;
+}
+
+#blowBtn .sp {
+  position: absolute;
+  font-style: normal;
+  color: #fff3c4;
+  text-shadow: 0 0 10px #ffd36b;
+  animation: bbTw 1.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+#blowBtn .s1 {
+  top: -13px;
+  left: 14%;
+  font-size: 12px;
+}
+
+#blowBtn .s2 {
+  top: -9px;
+  right: 10%;
+  font-size: 10px;
+  animation-delay: 0.35s;
+}
+
+#blowBtn .s3 {
+  bottom: -12px;
+  left: 48%;
+  font-size: 11px;
+  animation-delay: 0.7s;
+}
+
+#blowBtn:active {
+  transform: scale(0.95);
+}
+
+@keyframes bbBeat {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 18px rgba(255, 190, 100, 0.5),
+      0 0 40px rgba(255, 158, 199, 0.3);
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 34px rgba(255, 200, 110, 0.95),
+      0 0 80px rgba(255, 158, 199, 0.6);
+  }
+}
+
+@keyframes bbFlow {
+  to {
+    background-position: 250% 0;
+  }
+}
+
+@keyframes bbRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.45, 1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes bbFlame {
+  from {
+    transform: scale(1, 0.92) rotate(-4deg);
+  }
+
+  to {
+    transform: scale(0.94, 1.08) rotate(4deg);
+  }
+}
+
+@keyframes bbTw {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes bbUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #blowBtn,
+  #blowBtn::before,
+  #blowBtn::after,
+  #blowBtn .fl,
+  #blowBtn .tx small,
+  #blowBtn .sp {
+    animation: none;
+  }
+}
+
+#end {
+  z-index: 5 !important;
+}
+
+#c {
+  z-index: 1;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#brand {
+  position: fixed;
+  z-index: 3;
+  top: calc(7vh + 8px + env(safe-area-inset-top, 0px));
+  left: 20px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: var(--blue);
+  text-shadow: 0 0 20px var(--blue);
+  pointer-events: none;
+}
+
+#hint {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: calc(7vh + 20px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--rose);
+  pointer-events: none;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+#knife {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  transform-origin: 32px 63px;
+  pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(0 0 8px #4f8cff);
+}
+
+#end {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.card {
+  pointer-events: auto;
+  width: min(440px, 92vw);
+  box-sizing: border-box;
+  padding: 44px 36px;
+  border-radius: 24px;
+  background: rgba(16, 28, 68, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #2a4390;
+  box-shadow: 0 0 64px #14306e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  animation: rise 0.8s ease both;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 84px;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 24px var(--blue);
+}
+
+p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.step {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--rose);
+}
+
+button {
+  min-height: 52px;
+  padding: 0 32px;
+  border-radius: 999px;
+  border: 1px solid var(--blue);
+  background: rgba(10, 17, 40, 0.6);
+  color: var(--text);
+  font: 500 16px 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  #hint,
+  .wl,
+  .wr {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   HAPPY BIRTHDAY FULLSCREEN
+   ========================================================= */
+
+/*
+   Birthday animation fills the entire viewport,
+   but stays BELOW the Layout header/logo/logout.
+*/
+.birthday-root {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+
+  /* IMPORTANT:
+     Keep Birthday BELOW Layout controls.
+     Do NOT use 2147483647 here.
+  */
+  z-index: 1 !important;
+
+  /* Transparent while the sky blast plays behind it; turns solid when the birthday animation starts
+     (class .solid), exactly as the sky layer fades away. */
+  background-color: transparent;
+  transition: background-color 1s ease;
+
+  /* Wipes in from the TOP of the screen downward while the last sky rocket climbs
+     (--reveal is driven every frame by SkyAnimation: 0 = hidden, 1 = fully shown).
+     Soft 40% edge, so it feels like the rocket is crossing into the Birthday world. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--reveal, 0) * 140% - 40%), transparent calc(var(--reveal, 0) * 140%));
+  mask-image: linear-gradient(to bottom, #000 calc(var(--reveal, 0) * 140% - 40%), transparent calc(var(--reveal, 0) * 140%));
+}
+
+.birthday-root.solid {
+  background-color: #04010a;
+  /* fully revealed by now - drop the mask */
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+@keyframes birthdayBgIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/*
+   Birthday Three.js canvas.
+*/
+.birthday-root #c {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  display: block;
+
+  z-index: 1 !important;
+}
+
+
+/*
+   Birthday internal elements remain above
+   its canvas.
+*/
+.birthday-root #vig,
+.birthday-root .bar,
+.birthday-root #title,
+.birthday-root #hint,
+.birthday-root #knife,
+.birthday-root #pin,
+.birthday-root #blowBtn,
+.birthday-root #end {
+  position: fixed;
+}
+
+
+/*
+   Cinematic bars.
+*/
+.birthday-root .bar.t {
+  top: 0;
+}
+
+.birthday-root .bar.b {
+  bottom: 0;
+}

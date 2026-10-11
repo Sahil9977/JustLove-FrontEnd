@@ -1,0 +1,146 @@
+/* Content for DocsPage. Inline markup: **bold**  *italic*
+   Blocks: { p }  { note }  { quote }  { terms: [[label, text], ...] } */
+
+export const DOC = {
+  eyebrow: `Essay · Love & Humanity`,
+  title: `Love, Marriage, Humanity, and Our Connection with God`,
+  lead: `Understanding the True Meaning of Love and the Reality of Arranged and Love Marriages`,
+  sections: [
+    {
+      id: 'what-is-love',
+      nav: 'Introduction',
+      title: `Introduction: What Is Love?`,
+      blocks: [
+        { p: `Love is one of the most powerful experiences in human life. It influences our thoughts, emotions, relationships, decisions, and understanding of the world. Yet, despite its importance, love is difficult to define because it means different things to different people. For some, love is an emotional connection between two individuals. For others, it is a responsibility, a commitment, a spiritual experience, or a way of expressing kindness toward humanity.` },
+        { p: `True love is not limited to romantic relationships. It can be found in the care of parents, the friendship between companions, the kindness shown to strangers, and the compassion we feel for people who are suffering. At its deepest level, love involves understanding, respect, honesty, patience, and the willingness to care for another person without treating them as an object of personal satisfaction.` },
+        { p: `However, modern society often presents love as a feeling that must be intense, immediate, and romantic. Movies, social media, and popular culture frequently suggest that finding one perfect person will solve every problem in life. Real relationships are more complicated. Feelings can change, circumstances can become difficult, and people must learn how to communicate, forgive, grow, and take responsibility.` },
+        { note: `Therefore, to understand love, we must look beyond attraction and ask a more important question: Does our love help us become more honest, compassionate, responsible, and human?` },
+      ],
+    },
+    {
+      id: 'dimensions',
+      nav: 'Dimensions of love',
+      title: `The Different Dimensions of Love`,
+      blocks: [
+        { p: `Love has several dimensions that influence our lives.` },
+        {
+          terms: [
+            [`Emotional love`, `This is the affection and attachment we feel toward another person. It can create happiness, excitement, comfort, and a sense of belonging.`],
+            [`Romantic love`, `Romantic love involves attraction, emotional intimacy, and the desire to build a special relationship with someone. It can become the foundation of a long-term partnership when supported by trust and commitment.`],
+            [`Compassionate love`, `This means caring about the well-being of others. It includes helping people without expecting a reward and recognizing the dignity of every human being.`],
+            [`Responsible love`, `Responsible love is expressed through actions rather than words alone. It involves keeping promises, respecting boundaries, communicating honestly, and remaining accountable when difficulties arise.`],
+            [`Spiritual love`, `For many people, love is connected with God, the soul, or a deeper purpose in existence. It can inspire forgiveness, humility, gratitude, and service to others.`],
+          ],
+        },
+        { p: `These dimensions are connected. Romantic attraction may begin a relationship, but emotional maturity, responsibility, and mutual respect help it survive. Similarly, spiritual beliefs can guide relationships, but they do not remove the need for practical understanding and healthy communication.` },
+      ],
+    },
+    {
+      id: 'god',
+      nav: 'Love & God',
+      title: `Love and Our Connection with God`,
+      blocks: [
+        { p: `Many spiritual traditions teach that love is central to our relationship with God. Although religions differ in their understanding of the divine, many emphasize compassion, truthfulness, mercy, forgiveness, humility, and service.` },
+        { p: `In Hindu philosophical traditions, concepts such as *bhakti* (devotion), *karuna* (compassion), and *seva* (service) express different ways of approaching the divine and caring for living beings. The Bhagavad Gita discusses devotion, disciplined action, and performing one's responsibilities without becoming excessively attached to personal rewards.` },
+        { p: `In Christianity, love of God and love of one's neighbor are central teachings. In Islam, mercy, compassion, and responsibility toward others are important expressions of faith. Other spiritual traditions also encourage kindness, self-awareness, and freedom from selfishness.` },
+        { p: `These teachings offer an important perspective: our connection with God need not be expressed only through prayer, rituals, or visits to places of worship. It can also be reflected in how we treat our parents, partners, children, friends, and even people with whom we disagree.` },
+        { note: `If a person claims to love God but consistently humiliates others, exploits their partner, or acts dishonestly, there is a contradiction between that person's professed beliefs and behavior.` },
+        { p: `Spirituality can encourage us to examine our intentions. Are we loving someone because we genuinely care for them, or because we want control, status, security, or personal satisfaction? Are we willing to respect another person's dignity even when we disagree?` },
+        { p: `Connecting with God, for those who believe, can therefore become a journey of transforming selfishness into compassion and fear into understanding. Faith should ideally encourage love and responsibility rather than become a tool for controlling another person's life.` },
+      ],
+    },
+    {
+      id: 'marriage',
+      nav: 'Origins of marriage',
+      title: `How Humanity Developed the Institution of Marriage`,
+      blocks: [
+        { p: `Marriage is an ancient social institution that developed differently across cultures and historical periods. It has often served several purposes: organizing family life, establishing social responsibilities, raising children, transferring property, creating alliances, and providing companionship.` },
+        { p: `In many traditional societies, marriage was not considered an exclusively private decision between two individuals. Families and communities played significant roles in selecting partners. Factors such as family background, social position, religion, economic stability, community identity, and compatibility between households often influenced the decision.` },
+        { p: `In societies where individual choice was limited, marriage could also reinforce existing hierarchies. Women, in particular, have historically faced restrictions on their freedom to choose a partner in many cultures.` },
+        { p: `Over time, ideas about marriage have changed. Romantic love, individual autonomy, gender equality, and personal compatibility have gained greater importance in many societies. Nevertheless, traditional and modern approaches continue to coexist.` },
+        { p: `In India, arranged marriage remains an important practice, although its forms vary considerably. Some families make introductions and allow the couple to decide. Others place greater emphasis on family preferences. Love marriages, in which individuals choose their partners, are also common in many communities.` },
+        { p: `It is important to recognize that neither arranged marriage nor love marriage is a single, uniform experience. The quality of a marriage depends on the people involved, their freedom to choose, their expectations, and the way they treat each other.` },
+      ],
+    },
+    {
+      id: 'arranged',
+      nav: 'Is arranged marriage love?',
+      title: `Is Arranged Marriage Really Love?`,
+      blocks: [
+        { p: `An arranged marriage does not necessarily mean that love is absent. Equally, an arranged marriage does not guarantee that love will develop.` },
+        { p: `In some arranged marriages, families introduce two people who share compatible values, lifestyles, goals, and expectations. The individuals may gradually develop affection through conversation, shared experiences, trust, and mutual support.` },
+        { p: `This process can lead to genuine love. Two people do not always need to experience intense romantic attraction before marriage to build a meaningful relationship afterward.` },
+        { p: `However, a crucial distinction must be made between an arranged marriage and a forced marriage.` },
+        { p: `In a healthy arranged marriage, both individuals have a genuine opportunity to meet, ask questions, understand each other's expectations, and freely accept or reject the proposal. Family involvement can provide support, but the final decision belongs to the people getting married.` },
+        { p: `In a forced marriage, one or both individuals cannot freely refuse because of threats, intimidation, emotional blackmail, financial dependence, or social pressure. Such a situation cannot be justified simply by calling it tradition.` },
+        { p: `A marriage may appear successful to society because the couple remains together, raises children, or fulfills family responsibilities. Yet outward stability does not automatically prove the presence of affection, emotional intimacy, or happiness.` },
+        { note: `Therefore, the real question is not whether a marriage was arranged. It is whether the people involved were respected as individuals and whether their relationship allows them to live with dignity, trust, and emotional security.` },
+      ],
+    },
+    {
+      id: 'love-marriage',
+      nav: 'Is love marriage true love?',
+      title: `Is Love Marriage Always True Love?`,
+      blocks: [
+        { p: `Love marriage is often associated with freedom, emotional connection, and personal choice. Individuals choose each other because of attraction, affection, shared interests, or a sense of compatibility.` },
+        { p: `This can be a powerful foundation for a relationship. When people freely choose their partners, they may feel a strong sense of ownership over their decisions and a deeper motivation to build a shared future.` },
+        { p: `However, choosing someone because of romantic feelings does not automatically mean that the relationship is healthy or sustainable.` },
+        { p: `Sometimes people confuse attraction with compatibility, jealousy with care, possessiveness with commitment, or emotional dependence with love. They may fall in love with an imagined version of a person rather than understanding who that person actually is.` },
+        { p: `A relationship can begin with intense passion but struggle because of dishonesty, incompatible expectations, financial disagreements, disrespect, or a lack of emotional maturity.` },
+        { p: `True love requires more than the statement, "I cannot live without you." It also requires the ability to say, "I respect you as an independent person, and I want us both to grow."` },
+        { p: `Love marriage can become a deeply meaningful partnership when romantic feelings are accompanied by mutual respect, realistic expectations, shared responsibility, and the willingness to work through difficulties.` },
+        { p: `Likewise, arranged marriage can develop into genuine love when the partners have freely chosen one another and actively nurture their relationship.` },
+        { note: `Neither system guarantees happiness, and neither system automatically excludes love.` },
+      ],
+    },
+    {
+      id: 'success',
+      nav: 'What makes a marriage last',
+      title: `What Actually Makes a Marriage Successful?`,
+      blocks: [
+        { p: `A meaningful marriage is built through everyday actions rather than through the method by which the couple first met. Several factors are particularly important:` },
+        {
+          terms: [
+            [`Mutual consent`, `Both partners must be free to choose the relationship and continue participating in it willingly.`],
+            [`Respect`, `Each partner should be treated as an equal human being, regardless of gender, income, family background, or social position.`],
+            [`Communication`, `Partners need to discuss their expectations about careers, finances, children, family responsibilities, religion, intimacy, and personal boundaries.`],
+            [`Trust and honesty`, `A relationship becomes emotionally secure when people can rely on each other and communicate truthfully.`],
+            [`Emotional safety`, `Neither partner should have to live in constant fear of humiliation, threats, violence, or manipulation.`],
+            [`Commitment and adaptability`, `People change as they grow older. Successful partners learn to understand those changes and negotiate new responsibilities together.`],
+            [`Shared values`, `Partners do not need identical personalities or beliefs, but they benefit from understanding their fundamental differences and deciding whether they can build a life together.`],
+          ],
+        },
+        { p: `Family support can strengthen a marriage, but it should not replace the couple's own judgment. Similarly, romantic feelings can bring two people together, but they cannot replace the practical work required to sustain a relationship.` },
+      ],
+    },
+    {
+      id: 'freedom',
+      nav: 'Love, freedom & humanity',
+      title: `The Relationship Between Love, Freedom, and Humanity`,
+      blocks: [
+        { p: `Human beings have created traditions to organize society, preserve cultural identities, and provide stability. Marriage is one example of this process. Traditions can offer wisdom and belonging, but they can also contain practices that deserve reconsideration.` },
+        { p: `A humane society should be able to preserve meaningful traditions while allowing individuals to question practices that cause unnecessary suffering.` },
+        { p: `The important issue is whether a tradition protects human dignity or sacrifices individual well-being for social approval.` },
+        { p: `If families introduce two people and respect their freedom to choose, tradition and personal choice can work together. If families use tradition to deny consent, the same institution can become harmful.` },
+        { p: `Likewise, if two people choose each other for love but ignore honesty, respect, or responsibility, personal freedom alone cannot make their relationship healthy.` },
+        { p: `Humanity progresses when compassion and reason guide our customs. The purpose of marriage should not be merely to satisfy relatives, protect social reputation, or fulfill a cultural expectation. It should provide an opportunity for two people to build a relationship based on dignity, companionship, responsibility, and mutual growth.` },
+      ],
+    },
+    {
+      id: 'conclusion',
+      nav: 'Conclusion',
+      title: `Conclusion: Returning to Love and Our Connection with God`,
+      blocks: [
+        { p: `Ultimately, love is larger than marriage, and marriage is only one possible expression of love.` },
+        { p: `Arranged marriage is not automatically loveless, and love marriage is not automatically filled with genuine love. An arranged relationship can become loving through trust, understanding, and freely chosen commitment. A love marriage can become painful when attraction exists without respect, honesty, or responsibility.` },
+        { p: `The most meaningful distinction is not between traditional and modern marriage. It is between relationships that honor human dignity and relationships that deny it.` },
+        { p: `For those who believe in God, this understanding offers a powerful spiritual lesson. If God represents truth, compassion, wisdom, and goodness, then our relationships should reflect those values. Our devotion should make us more understanding, not more judgmental; more compassionate, not more controlling; and more respectful of human freedom, not less.` },
+        { p: `We can connect with God through prayer and worship, but we can also express our spiritual values by listening to another person, protecting the vulnerable, speaking truthfully, forgiving when appropriate, and refusing to treat human beings as possessions.` },
+        { p: `Love should not be measured only by how strongly we feel or how publicly we express our affection. It should also be measured by how we behave when relationships become difficult, when our expectations are challenged, and when another person's needs differ from our own.` },
+        { p: `A truly loving marriage is not simply a successful arrangement between two families or the fulfillment of a romantic dream. It is a continuing partnership in which two people are free to choose each other, learn from each other, support each other, and grow together.` },
+        { quote: `Perhaps one of the deepest lessons humanity can learn is this: **Traditions may tell us how relationships have been formed, but compassion, freedom, honesty, and responsibility help determine whether those relationships become genuine expressions of love.**` },
+        { p: `When love brings together the heart, the mind, and our highest spiritual values, it can become more than a personal emotion. It can become a way of living—with our partners, with humanity, and, for those who believe, in connection with God.` },
+      ],
+    },
+  ],
+};

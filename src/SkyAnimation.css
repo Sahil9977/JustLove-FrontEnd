@@ -1,0 +1,67 @@
+.skyfall-fireworks {
+  z-index: 0;
+  /* sits BELOW the Birthday layer (z-index 1, transparent background) so the blast shows behind the Birthday background */
+  pointer-events: none;
+  /* taps still skip via window listeners; Birthday stays clickable */
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #02040a;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #e6f0ff;
+}
+
+.skyfall-fireworks canvas {
+  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.skyfall-fireworks #cap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 11%;
+  text-align: center;
+  font-size: clamp(16px, 3vw, 26px);
+  letter-spacing: .2em;
+  font-style: italic;
+  font-weight: 300;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 18px #3d8bff;
+  transition: opacity 1.2s;
+  padding: 0 20px;
+}
+
+.skyfall-fireworks .ui {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: .15em;
+  opacity: .8;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+
+/* Final fade: same colour the birthday scene starts on (#04010a), so the hand-over has no flash */
+.skyfall-fireworks #wo {
+  position: fixed;
+  inset: 0;
+  background: #04010a;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* No blend mode needed any more: Sky stays opaque and the Birthday layer (transparent
+   background, golden particles) is drawn on top of it. */

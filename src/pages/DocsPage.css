@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=JetBrains+Mono:wght@400&family=Great+Vibes&display=swap");
+
+/* Everything is scoped to .dp-* classes. No *, html, body, :root or bare element selectors. */
+
+.dp-root {
+  --dp-bg: #000;
+  --dp-panel: rgba(14, 14, 16, .72);
+  --dp-line: rgba(255, 255, 255, .1);
+  --dp-fg: #f2f2f4;
+  --dp-mut: #8b8b95;
+  position: fixed !important;
+  top: var(--dp-top, 0px) !important; /* full screen: covers the host app's header */
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: var(--dp-z, 10000) !important;
+  isolation: isolate !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y !important;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  scroll-padding-top: var(--dp-gap, 96px) !important;
+  background: var(--dp-bg) !important;
+  color: var(--dp-fg) !important;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.75 !important;
+  text-align: left !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+/* Host-proof text reset: every text class sets the properties a host app's
+   tag rules (h1, a, nav, p ...) commonly override. Listed by class, no * selector. */
+.dp-nav,
+.dp-nav-title,
+.dp-nav-link,
+.dp-main,
+.dp-eyebrow,
+.dp-h1,
+.dp-lead,
+.dp-h2,
+.dp-p,
+.dp-card,
+.dp-card-title,
+.dp-card-text,
+.dp-note,
+.dp-quote,
+.dp-footer,
+.dp-b {
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-indent: 0 !important;
+  float: none !important;
+}
+/* box-sizing for every box that has padding or borders (listed instead of using *) */
+.dp-header,
+.dp-shell,
+.dp-nav,
+.dp-nav-link,
+.dp-card,
+.dp-note,
+.dp-quote,
+.dp-main,
+.dp-footer,
+.dp-hero,
+.dp-section {
+  box-sizing: border-box !important;
+}
+.dp-bg {
+  position: fixed;
+  top: var(--dp-top, 0px);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--dp-top, 0px));
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}
+
+.dp-vig {
+  position: fixed;
+  top: var(--dp-top, 0px);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 60% 40%, transparent 35%, #000 100%);
+}
+
+/* ---------- header ---------- */
+.dp-topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5 !important;
+  display: block !important;
+  height: var(--dp-gap, 96px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  pointer-events: none !important;
+  /* keeps text from running under your app's logo and Lock button */
+  background: linear-gradient(180deg, #000 60%, rgba(0, 0, 0, 0)) !important;
+}
+
+.dp-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: calc(14px + env(safe-area-inset-top, 0px)) clamp(18px, 4vw, 48px) 30px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  /* transparent bar: fades the text out under the logo and Lock button */
+  background: linear-gradient(180deg, #000 45%, rgba(0, 0, 0, 0)) !important;
+  pointer-events: none !important;
+  filter: none !important;
+}
+
+.dp-logo {
+  pointer-events: auto !important;
+  font-family: 'Great Vibes', 'Snell Roundhand', 'Brush Script MT', cursive !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 2.4rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #f7e3b0 !important;
+  text-shadow: 0 0 18px rgba(255, 205, 120, .45), 0 0 4px rgba(255, 235, 190, .5) !important;
+}
+
+.dp-lock {
+  pointer-events: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 13px 24px !important;
+  box-sizing: border-box !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: pointer !important;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  letter-spacing: .2em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  color: #f7e3b0 !important;
+  background: linear-gradient(135deg, #1d1340, #0e0a22) !important;
+  border: 1px solid rgba(247, 200, 120, .55) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 0 22px rgba(247, 200, 120, .22), inset 0 0 14px rgba(150, 110, 255, .12) !important;
+  text-shadow: none !important;
+  transition: box-shadow .25s, transform .25s !important;
+}
+
+.dp-lock:hover {
+  box-shadow: 0 0 32px rgba(247, 200, 120, .45), inset 0 0 14px rgba(150, 110, 255, .2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dp-lock:focus-visible {
+  outline: 2px solid #f7e3b0 !important;
+  outline-offset: 3px !important;
+}
+
+.dp-lock-ico {
+  display: block !important;
+  flex: none !important;
+}
+
+/* ---------- layout ---------- */
+.dp-shell {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(18px, 4vw, 48px) 120px;
+}
+
+.dp-nav {
+  display: block;
+  flex-direction: column;
+  margin: 0;
+  background: none;
+  border: 0;
+  width: auto;
+  max-height: calc(100vh - var(--dp-gap, 96px) - 48px);
+  overflow-y: auto;
+  position: sticky;
+  top: var(--dp-gap, 96px);
+  align-self: start;
+  padding-top: 20px;
+}
+
+.dp-nav-title {
+  display: block;
+  margin: 0 0 14px;
+  font-size: .7rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--dp-mut);
+}
+
+.dp-nav-link {
+  pointer-events: auto !important;
+  display: block;
+  padding: 8px 0 8px 16px;
+  color: var(--dp-mut);
+  text-decoration: none;
+  font-size: .9rem;
+  border-left: 1px solid var(--dp-line);
+  transition: .25s;
+}
+
+.dp-nav-link:hover {
+  color: #fff;
+}
+
+.dp-nav-link.dp-active {
+  color: #fff;
+  border-color: #fff;
+  padding-left: 22px;
+  text-shadow: 0 0 14px rgba(255, 255, 255, .6);
+}
+
+/* ---------- hero ---------- */
+.dp-hero {
+  padding: 20px 0 40px;
+  perspective: 900px;
+}
+
+.dp-eyebrow {
+  display: block;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--dp-mut);
+  font-size: .72rem;
+}
+
+.dp-h1 {
+  margin: 14px 0 18px;
+  font-weight: 300;
+  display: block;
+  text-transform: none;
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  background: linear-gradient(180deg, #fff, #6d6d76);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dp-lead {
+  display: block;
+  max-width: 620px;
+  margin: 0;
+  color: var(--dp-mut);
+}
+
+/* ---------- sections ---------- */
+.dp-section {
+  padding: 46px 0 10px;
+}
+
+.dp-h2 {
+  display: block;
+  margin: 0 0 14px;
+  font-weight: 400;
+  font-size: 1.7rem;
+  letter-spacing: -.01em;
+}
+
+.dp-num {
+  color: var(--dp-mut);
+  text-shadow: none !important;
+  filter: none !important;
+  font-style: normal !important;
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: .8rem;
+  margin-right: 12px;
+}
+
+.dp-p {
+  display: block;
+  margin: 0 0 16px;
+  color: #c4c4cb;
+}
+
+.dp-card {
+  pointer-events: auto !important;
+  position: relative;
+  padding: 22px 24px;
+  margin: 22px 0;
+  border-radius: 18px;
+  background: var(--dp-panel);
+  border: 1px solid var(--dp-line);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  transition: transform .2s ease-out, border-color .3s;
+  will-change: transform;
+}
+
+.dp-card:hover {
+  border-color: rgba(255, 255, 255, .35);
+}
+
+.dp-card-title {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.dp-card-text {
+  display: block;
+  margin: 0;
+  font-size: .95rem;
+  color: #c4c4cb;
+}
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.dp-grid .dp-card {
+  margin: 8px 0;
+}
+
+.dp-note {
+  margin: 22px 0;
+  padding: 16px 20px;
+  border-left: 2px solid #fff;
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 255, 255, .04);
+  color: #d8d8de;
+}
+
+.dp-footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px calc(30px + env(safe-area-inset-right, 0px)) calc(30px + env(safe-area-inset-bottom, 0px));
+  color: var(--dp-mut);
+  font-size: .8rem;
+  border-top: 1px solid var(--dp-line);
+}
+
+.dp-main {
+  display: block;
+  min-width: 0;
+}
+
+.dp-b {
+  font-weight: 600 !important;
+  color: #fff !important;
+}
+
+.dp-i {
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  font-style: italic !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.dp-quote {
+  margin: 30px 0;
+  padding: 26px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015));
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #e6e6ea;
+  box-shadow: 0 0 60px rgba(255, 255, 255, .04);
+}
+
+/* scroll reveal */
+.dp-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .8s, transform .8s;
+}
+
+.dp-reveal.dp-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 860px) {
+  .dp-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-nav {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dp-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .dp-root {
+    scroll-behavior: auto;
+  }
+}

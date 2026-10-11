@@ -1,0 +1,215 @@
+/* Timer page only. Everything is prefixed "tm-" and uses its own colours, so it does not depend on (or change) styles.css. */
+.tm-page {
+    --tm-bg: #0b0720;
+    --tm-pink: #ff7fd6;
+    --tm-violet: #a77bff;
+    --tm-blue: #6f9bff;
+    --tm-gold: #ffe3a8;
+    --tm-text: #f3edff;
+    --tm-muted: #cdbfee;
+    --tm-label: #a898dc;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, #1d0f4d 0%, var(--tm-bg) 65%);
+    color: var(--tm-text);
+    font-family: 'Poppins', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 16px calc(5vh + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+}
+
+.tm-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+}
+
+/* soft dark fade behind the text so it is always easy to read */
+.tm-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 42%, rgba(11, 7, 32, .6) 70%, rgba(11, 7, 32, .88));
+}
+
+.tm-brand {
+    position: absolute;
+    z-index: 3;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    left: 24px;
+    font-family: 'Great Vibes', cursive, Georgia, serif;
+    font-size: 36px;
+    color: var(--tm-gold);
+    text-shadow: 0 0 20px var(--tm-violet);
+}
+
+.tm-content {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    max-height: 62vh;
+}
+
+.tm-step {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--tm-pink);
+}
+
+.tm-title {
+    margin: 0;
+    font-family: 'Great Vibes', cursive, Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 8vw, 66px);
+    text-wrap: balance;
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 0 0 28px var(--tm-violet), 0 0 60px rgba(255, 127, 214, .35);
+}
+
+.tm-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: var(--tm-muted);
+    max-width: 52ch;
+}
+
+.tm-err {
+    color: #ff8fa0;
+}
+
+.tm-when {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--tm-gold);
+}
+
+/* countdown rings */
+.tm-count {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(8px, 2.2vw, 20px);
+    width: min(540px, 94vw);
+    margin: 4px 0;
+}
+
+.tm-unit {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 50% 38%, rgba(167, 123, 255, .22), rgba(11, 7, 32, .6) 72%);
+    box-shadow: 0 0 30px rgba(167, 123, 255, .25), inset 0 0 24px rgba(111, 155, 255, .12);
+}
+
+.tm-unit svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    overflow: visible;
+}
+
+.tm-ring-bg,
+.tm-ring {
+    fill: none;
+    stroke-width: 3.2;
+}
+
+.tm-ring-bg {
+    stroke: rgba(167, 123, 255, .2);
+}
+
+.tm-ring {
+    stroke: url(#tm-grad);
+    stroke-linecap: round;
+    transition: stroke-dashoffset .9s linear;
+    filter: drop-shadow(0 0 3px rgba(255, 127, 214, .8));
+}
+
+.tm-unit-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2px, .8vw, 6px);
+}
+
+.tm-num {
+    font: 300 clamp(24px, 6.4vw, 44px)/1 'Poppins', sans-serif;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 20px var(--tm-violet);
+}
+
+.tm-lbl {
+    font-size: clamp(7px, 1.6vw, 10px);
+    letter-spacing: clamp(1px, .45vw, 3px);
+    color: var(--tm-label);
+}
+
+.tm-btn {
+    min-height: 52px;
+    padding: 0 40px;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font: 500 16px 'Poppins', sans-serif;
+    color: var(--tm-bg);
+    background: linear-gradient(135deg, var(--tm-pink), var(--tm-violet));
+    box-shadow: 0 0 30px rgba(167, 123, 255, .65);
+    animation: tm-glow 2.2s ease-in-out infinite;
+}
+
+.tm-btn:disabled {
+    opacity: .6;
+    cursor: wait;
+    animation: none;
+}
+
+@keyframes tm-glow {
+    50% {
+        box-shadow: 0 0 52px rgba(255, 127, 214, .85);
+    }
+}
+
+@media (max-height: 640px) {
+    .tm-text {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tm-ring {
+        transition: none;
+    }
+
+    .tm-btn {
+        animation: none;
+    }
+}
+
+.tm-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+.tm-bg-item { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease; }
+.tm-bg-item.on { opacity: 1; }
+.tm-bg::after { content: ''; position: absolute; inset: 0; background: rgba(8, 2, 24, .45); } /* keeps text readable */
+.tm-canvas { position: fixed; inset: 0; z-index: 1; }
+.tm-brand, .tm-content { position: relative; z-index: 2; }
+ 
