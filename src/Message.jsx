@@ -8,29 +8,31 @@ import { useAuth } from './context/AuthContext';
    Leave an empty line between paragraphs (use \n\n inside the quotes). */
 const TITLE = ''; /* optional small heading, e.g. "For you" - leave empty for none */
 const myMESSAGE = [
-  "Haan ji, toh aa gye yaha tak ☺️",
+  "Haan ji, toh finally aa gye yaha tak ☺️",
 
-  "Sabse phele, Happy Birthday meri Pratibha ji ko 🥳✨",
+  "Sabse phele, So Sorry yaar kal raat ko ye deploy hone me error de ra tha bahut jada 🥺",
 
-  "Bhagwan se mein pray karta hu ki tmhe har cheez de jo tum chahte ho... so tmhare har kam me success mile... jisse hme koi bhi kabhi dikkat na ho 😂😂",
+   "and Happy Birthday meri Pratibha ji ko 🥳✨",
+
+  "Bhagwan se mein pray karta hu ki tmhe har cheez de jo tum chahte ho... and tmhare har kam me success mile... jisse hme koi bhi kabhi dikkat na ho 😂😂",
 
   "Toh batao madam ji, kaisa laga ye gift? 👀",
 
   "Umeed karte hai purse se toh behtar hi hoga 😂😅",
 
-  "Or waise ye dekh kar ab tum shayad dukhi ho jao 🥺, kyunki ab tm saare cheeze or yaad karoge ki har saal hm log tmhare birthday par kahi na kahi jate the, kuch na kuch karte the... khair ho sakta tum ro bhi 🥲... but meri mano toh rona fizul hai yaar 😏",
+  "Or waise ye dekh kar ab tum shayad dukhi ho gyi hogi 🥺, kyunki ab tm saare cheeze or yaad karoge ki har saal hm log tmhare birthday par kahi na kahi jate the, kuch na kuch karte the... khair ho sakta tum ro bhi 🥲... but meri mano toh rona fizul hai yaar 😏",
 
-  "Tum un palo ki khushiyon ko feel karo ki kitta maja aaya tha jab ham log park gye the noida m, kitta maja kiya tha yaar... bowling, table tennis or na jane kya kuch or. Toh tm toh table tennis ko bat ball samaj ke khel re the 😂😂... khair us din khelte khelte kitta thak gye the na, jo bhi tha worth it tha 🥳",
+  "Tum un palo ki khushiyon ko feel karo ki kitta maja aaya tha jab ham log park gye the noida m, kitta maja kiya tha yaar... bowling, table tennis or na jane kya kuch or. Toh tm toh table tennis ko bat ball samaj ke khel re the 😂😂... khair jo bhi tha worth it tha 🥳",
 
   "So kulmilake saari baat or ye case batane ka matlb ye hai ki ye yaad hi hai jo hme dukhi time me bhi khush kar sakti hai, ki yaar mene ye bhi kiya hai 🙌",
 
   "Lekin tm rone me vishwash rakhti hmm, pagli ni toh 🙃... socho agar ye yaad hi na hoti, kya tm khush hoti jo kaam kar ri ho wo karti? Obvious hai nhi, kyunki in yaad ke wajah se hi hm apne kaam kar re ki dobara isse bhi acha kuch karenge saath, chinese khayenge saath 🫠",
 
-  "Toh meri maniye madam ji, or sochiye ki hmara saath ek khushi hai, dukh nhi 🤗😊",
+  "Toh meri maniye madam ji, or sochiye ki hmara saath hmari yaade ye khushi hai, dukh nhi 🤗😊",
 
-  "Shayad mene jada hi gyan de diya, but u know one thing, tum kuch nhi karte kyunki ye already written hai 😂",
+  "Shayad mene jada hi gyan de diya,",
 
-  "Khair, mera uper ye sab likhte wakt mujhe khushi nhi hui. Kyunki mujhe pata hai tm royi hogi 🥲 or me bikul bhi nhi chahta tha ki aisa ho, khaas taur aaj ke din... but mujhe batana tha ki",
+  "waise mujhe uper ye sab likhte wakt mujhe khushi nhi hui. Kyunki mujhe pata hai tm royi hogi 🥲 or me bikul bhi nhi chahta tha ki aisa ho, khaas taur aaj ke din... but mujhe batana tha ki",
 
   "\"A GOOD LIFE IS A COLLECTION OF HAPPY MEMORIES ❤️\"",
 
@@ -38,13 +40,13 @@ const myMESSAGE = [
 
   "Chahta toh sach mein koi purse de sakta tha ya or kuch jo or acha ho, bhut si cheez hai internet par. U know why this? 👀",
 
-  "Aao batate, mere dimag m kuch nhi tha aaj 1.5 week phele, but suddenly yaad aaya ki biwi ji ka bday bhi toh aa ra hai, toh kiya jaye 🙃",
+  "toh aisa tha mere dimag m kuch nhi tha aaj 1.5 week phele, but suddenly yaad aaya ki biwi ji ka bday bhi toh aa ra hai, toh kiya jaye 🙃",
 
   "Waise mein chahta toh apne aap ko dena tha, or mast kahi ghumna, or aaram se kisi mast view ke samne sax sux karna... haye mere ye khayal ufff 🥵😁🤭",
 
-  "khair ye ho nhi sakta tha , so leave it 👀... toh phir mene socha, mene toh kuch bhi bhut acha gift nhi diya, toh me chahta tha ki tumko kuch aisa du jo aaj tak na diya ho ✨... toh sabse phele mene materialistic cheeze hata di, ewww 😂... toh phir pata nhi kaha se ye idea aaya, kya hua...",
+  "khair ye ho nhi sakta tha , so leave it 👀...Haa toh phir mene socha ki mene toh kuch bhi bhut acha gift nhi diya, toh me chahta tha ki tumko kuch aisa du jo aaj tak na diya ho jo tum apne pass rakh sako ✨... toh sabse phele mene materialistic cheeze hata di, ewww 😂... toh phir pata nhi kaha se ye idea aaya, jane kya hua...",
 
-  " I keep thinking that what is going on? Because for that present I sacrificed my sleep,  work even my trading as well and after few times I realised the only reason that pushed me to do such things is .....",
+  "So i keep thinking that what is going on? Because for that present I sacrificed my sleep,  work even my trading as well and after few time I realised the only reason that pushed me to do such things is .....",
 ].join('\n\n');
 
 const MESSAGE =

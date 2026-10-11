@@ -988,7 +988,7 @@ function ScrollGallery({ photos, onAddFiles }) {
         <div style={{ marginTop: 18 }}>
           <label className="add">
             <svg className="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" /><circle cx="9" cy="10" r="2" /><path d="M21 16l-5-5-8 8" /></svg>
-            Add photos
+            ''
             <input id="file" type="file" accept="image/*" multiple hidden onChange={e => { const fs = [...e.target.files]; e.target.value = ''; if (fs.length) onAddFiles(fs) }} />
           </label>
         </div>
