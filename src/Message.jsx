@@ -20,7 +20,7 @@ const myMESSAGE = [
 
   "Umeed karte hai purse se toh behtar hi hoga 😂😅",
 
-  "Or waise ye dekh kar ab tum shayad dukhi ho gyi hogi 🥺, kyunki ab tm saare cheeze or yaad karoge ki har saal hm log tmhare birthday par kahi na kahi jate the, kuch na kuch karte the... khair ho sakta tum ro bhi 🥲... but meri mano toh rona fizul hai yaar 😏",
+  "waise shayad ye dekh kar ab tum shayad dukhi ho gyi hogi 🥺, kyunki ab tm saare cheeze or yaad karoge ki har saal hm log tmhare birthday par kahi na kahi jate the, kuch na kuch karte the... khair ho sakta tum ro bhi 🥲... but meri mano toh rona fizul hai yaar 😏",
 
   "Tum un palo ki khushiyon ko feel karo ki kitta maja aaya tha jab ham log park gye the noida m, kitta maja kiya tha yaar... bowling, table tennis or na jane kya kuch or. Toh tm toh table tennis ko bat ball samaj ke khel re the 😂😂... khair jo bhi tha worth it tha 🥳",
 
@@ -32,7 +32,7 @@ const myMESSAGE = [
 
   "Shayad mene jada hi gyan de diya,",
 
-  "waise mujhe uper ye sab likhte wakt mujhe khushi nhi hui. Kyunki mujhe pata hai tm royi hogi 🥲 or me bikul bhi nhi chahta tha ki aisa ho, khaas taur aaj ke din... but mujhe batana tha ki",
+  "waise mujhe uper ye sab likhte wakt mujhe khushi nhi hui. Kyunki mujhe lagta hai shayd tm royi ya emotional ho gyi hogi 🥲 or me bikul bhi nhi chahta tha ki aisa ho, khaas taur aaj ke din... but mujhe batana tha ki",
 
   "\"A GOOD LIFE IS A COLLECTION OF HAPPY MEMORIES ❤️\"",
 
@@ -40,13 +40,13 @@ const myMESSAGE = [
 
   "Chahta toh sach mein koi purse de sakta tha ya or kuch jo or acha ho, bhut si cheez hai internet par. U know why this? 👀",
 
-  "toh aisa tha mere dimag m kuch nhi tha aaj 1.5 week phele, but suddenly yaad aaya ki biwi ji ka bday bhi toh aa ra hai, toh kiya jaye 🙃",
+  "toh aisa tha mere dimag m kuch nhi tha aaj se 1.5-2 week phele, but suddenly yaad aaya ki biwi ji ka bday bhi toh aa ra hai, toh kiya jaye 🙃",
 
   "Waise mein chahta toh apne aap ko dena tha, or mast kahi ghumna, or aaram se kisi mast view ke samne sax sux karna... haye mere ye khayal ufff 🥵😁🤭",
 
   "khair ye ho nhi sakta tha , so leave it 👀...Haa toh phir mene socha ki mene toh kuch bhi bhut acha gift nhi diya, toh me chahta tha ki tumko kuch aisa du jo aaj tak na diya ho jo tum apne pass rakh sako ✨... toh sabse phele mene materialistic cheeze hata di, ewww 😂... toh phir pata nhi kaha se ye idea aaya, jane kya hua...",
 
-  "So i keep thinking that what is going on? Because for that present I sacrificed my sleep,  work even my trading as well and after few time I realised the only reason that pushed me to do such things is .....",
+  "So i keep thinking that what is going on? Because for that present I sacrificed my sleep, work even my trading as well and after few time I realised the only reason that pushed me to do such things is .....",
 ].join('\n\n');
 
 const MESSAGE =
@@ -83,7 +83,7 @@ const MUSIC_FADE_OUT = 1.6; /* seconds the music takes to fade away once the shu
 
 /* ---- 3. THE LOGO WORD ("JustLove"): comes after the message ends, stays, then scatters into dust ---- */
 const SPECIAL_WORDS = 'JustLove'; /* the logo word, written in the centre after the message ends. "" for none */
-const HERO_DELAY = 1; /* seconds to wait after the message ends, before the logo starts being written */
+const HERO_DELAY = 2; /* seconds to wait after the message ends, before the logo starts being written */
 const LOGO_DRAW_TIME = 3; /* seconds the logo takes to be written (2 = quick, 4 = slow) */
 const LOGO_HOLD = 1; /* seconds the finished logo stays on screen before it scatters */
 const LOGO_SCATTER = true; /* true = dissolves into dust that blows away, false = simply fades out */
