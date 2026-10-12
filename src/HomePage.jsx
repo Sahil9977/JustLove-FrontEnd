@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import * as THREE from 'three';
 import SkyToBirthday from './SkyToBirthday.jsx'; // 👈 Sky -> Birthday chain (mounted ONCE, paused, then started)
 import './HomePage.css';
+import { useAuth } from './context/AuthContext.jsx';
 
 const TEXT_START_DELAY_MS = 1000;
 const DEFAULT_FADE_SPEED_MS = 1600;
@@ -91,6 +92,7 @@ export default function HomePage() {
   const arrivalFlashRef = useRef(null);
   const welcomeCanvasRef = useRef(null);
   const pageRef = useRef(null);
+  const {user}=useAuth();
 
   useEffect(() => {
     if (!entered) return; // everything (text, stardust, sky) waits for the start tap
@@ -541,6 +543,7 @@ export default function HomePage() {
   // If the browser blocks sound (no tap on the site yet), it starts at the very first tap / key press instead.
   useEffect(() => {
     if (!BG_VOICE_URL || !entered) return;
+    if(user.id !='owner') return;
     const audio = voiceRef.current || new Audio(BG_VOICE_URL);
     audio.preload = 'auto';
     audio.volume = BG_VOICE_VOLUME;
