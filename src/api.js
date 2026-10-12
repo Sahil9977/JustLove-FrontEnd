@@ -21,6 +21,12 @@ const api = axios.create({
   },
 });
 
+// const api = axios.create({
+//   baseURL: '/api',
+//   withCredentials: true,
+//   headers: { 'Content-Type': 'application/json' },
+// });
+
 // These endpoints can legitimately return 401 without meaning
 // that an existing session has expired.
 const QUIET_401 = [
