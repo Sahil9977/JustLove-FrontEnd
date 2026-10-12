@@ -56,7 +56,7 @@ const MESSAGE =
   'So this is my promise: I will stay, I will listen, and I will love you in all the small ways that last.\n\n' +
   'Thank you for being you.\nAlways yours.';
 
-const TYPE_SPEED = 1; /* TYPING SPEED of the main message: 1 = normal, 0.6 = faster, 1.4 = slower */
+const TYPE_SPEED = 1.4; /* TYPING SPEED of the main message: 1 = normal, 0.6 = faster, 1.4 = slower */
 const START_DELAY = 1.6; /* seconds before typing begins */
 
 /* ---- 1. TODAY'S DATE, typed as the first line of the message box ---- */
