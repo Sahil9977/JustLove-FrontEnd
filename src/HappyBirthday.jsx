@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import "./HappyBirthday.css";
+import { useAuth } from "./context/AuthContext";
 
 // ============================================================
 // EDIT THESE IF YOU WANT TO CUSTOMIZE THE ORIGINAL HTML
@@ -19,6 +20,7 @@ export const RISE_SPEED = 16; // How fast the golden particles stream down while
 // ============================================================
 
 export default function HappyBirthday({ start = true }) {
+  const {user} = useAuth();
   const rootRef = useRef(null);
   // start=false  -> page is loaded and its background is visible (bars, vignette, golden particles),
   //                 but the birthday animation is held at 0.
@@ -521,7 +523,7 @@ export default function HappyBirthday({ start = true }) {
       <div id="title" className={start ? "" : "hidden"}>
         <div className="row">
           <h2 className="wl">Happy</h2>
-          <h2 className="wr">Birthday<span id="who">Sweetheart</span></h2>
+          <h2 className="wr">Birthday<span id="who">{user.id==='preview'?'To you':'Sweetheart'}</span></h2>
         </div>
       </div>
 
