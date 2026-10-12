@@ -92,7 +92,7 @@ export default function HomePage() {
   const arrivalFlashRef = useRef(null);
   const welcomeCanvasRef = useRef(null);
   const pageRef = useRef(null);
-  const {user}=useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (!entered) return; // everything (text, stardust, sky) waits for the start tap
@@ -543,7 +543,7 @@ export default function HomePage() {
   // If the browser blocks sound (no tap on the site yet), it starts at the very first tap / key press instead.
   useEffect(() => {
     if (!BG_VOICE_URL || !entered) return;
-    if(user.id !='owner') return;
+    if (user.id != 'owner') return;
     const audio = voiceRef.current || new Audio(BG_VOICE_URL);
     audio.preload = 'auto';
     audio.volume = BG_VOICE_VOLUME;
@@ -621,8 +621,9 @@ export default function HomePage() {
       {createPortal(<canvas ref={welcomeCanvasRef} id="welcome-portal-canvas"></canvas>, document.body)}
 
       {/* 6. Poetry sentences */}
-      {user.id ==='owner' && (<div ref={textStageRef} className="cinema-text-stage">
-        <p data-speed="1" data-hold="300">
+      <div ref={textStageRef} className="cinema-text-stage">
+        {user.id === 'owner' && (<>
+          <p data-speed="1" data-hold="300">
           Hiii Mam👋
         </p>
         <p data-speed="1" data-hold="300">
@@ -644,8 +645,8 @@ export default function HomePage() {
           Unhone  , <span className="act-highlight">aapke liye khaas   </span>💖 <span className="act-highlight">ye present</span>  taiyar kiya hai. </p>
   
         <p data-speed="1" data-hold="50">
-          Toh aaiye  <span className="act-highlight">dekhte hai phir</span>😅 </p>
-      </div>)}
+          Toh aaiye  <span className="act-highlight">dekhte hai phir</span>😅 </p></>)}
+      </div>
     </div>
   );
 }
