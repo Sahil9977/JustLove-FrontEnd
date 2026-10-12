@@ -621,7 +621,7 @@ export default function HomePage() {
       {createPortal(<canvas ref={welcomeCanvasRef} id="welcome-portal-canvas"></canvas>, document.body)}
 
       {/* 6. Poetry sentences */}
-      <div ref={textStageRef} className="cinema-text-stage">
+      {user.id ==='preview' && (<div ref={textStageRef} className="cinema-text-stage">
         <p data-speed="1" data-hold="300">
           Hiii Mam👋
         </p>
@@ -645,7 +645,7 @@ export default function HomePage() {
   
         <p data-speed="1" data-hold="50">
           Toh aaiye  <span className="act-highlight">dekhte hai phir</span>😅 </p>
-      </div>
+      </div>)}
     </div>
   );
 }
