@@ -211,5 +211,4 @@
 .tm-bg-item.on { opacity: 1; }
 .tm-bg::after { content: ''; position: absolute; inset: 0; background: rgba(8, 2, 24, .45); } /* keeps text readable */
 .tm-canvas { position: fixed; inset: 0; z-index: 1; }
-.tm-brand, .tm-content { position: relative; z-index: 2; }
- 
+.tm-content { position: relative; z-index: 2; }
